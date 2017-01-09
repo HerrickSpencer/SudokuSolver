@@ -3,10 +3,10 @@
 
 ### What is this repository for? ###
 
-* Quick summary
-	Written originally as a conversion of a Perl program to C#, this is a Sudoku solver that primarily works using events triggered by changes to the grid. It 'self solves' as any cell is entered or solved for asynchronously. 
-* Version 1.0
-* Longer summary
+* Quick summary  
+	Written originally (ca. October 2011) as a conversion of a Perl program to C#, this is a Sudoku solver that primarily works using events triggered by changes to the grid. It 'self solves' as any cell is entered or solved for asynchronously. 
+* Version 1.0  
+* Longer summary  
 	This started as a Perl program I wrote (included in this repo) that I used to help solve difficult Sudoku puzzles... then I tried to use that pl to solve the most difficult ones and it works well. However, I wanted to study Async programming and Eventing in C#... so I decided to rewrite the project in C# as a library for a console app. (The Console app is still included in the project)
 	This is where the project turned into a purely event driven program. Only when a cell is changed, either by the user or the solver itself, will the solver run any logic to solve additional cells. It uses a hierarchy of inherited classes to accomplish this, each doing work for their respective type. It works only by events thrown when any cell is either changed or solved. This in turn 'tells' the related cells in columns, rows, or boxes to attempt to solve themselves.	
 
@@ -42,6 +42,6 @@
 ### Who do I talk to? ###
 
 * Repo owner or admin
-	* Currently me (Herrick Spencer - Code@HerrickSpencer.com)
+	* Currently me, Herrick Spencer - email: (Code [at sym] Herrickspencer [dot] com)
 * Other community or team contact
 	* Currently there is none, but we can develop if the project takes off.
