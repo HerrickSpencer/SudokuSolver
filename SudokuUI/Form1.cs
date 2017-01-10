@@ -69,7 +69,7 @@ namespace SudokuUI
 
         public void RunTestStuff()
         {
-            string testfile = "C:\\Users\\herricks\\SkyDrive\\Visual Studio Projects\\SudokuSolver\\SudokuUI\\bin\\Debug\\Boards\\savefile.csv";
+            string testfile = Directory.GetParent(Application.StartupPath).Parent.Parent.FullName + "\\Boards\\Board.csv";
             SudokuPuzzle newPuz = new SudokuPuzzle(SudokuPuzzle.GetPuzzle(testfile));
             ChangePuzzle(newPuz);
             //btnMostDiff.PerformClick();
@@ -193,6 +193,8 @@ namespace SudokuUI
         private void btnLoadFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.InitialDirectory = Directory.GetParent(Application.StartupPath).Parent.Parent.FullName + "\\Boards";
+
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 try
