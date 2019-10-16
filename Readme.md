@@ -4,7 +4,7 @@
 ### What is this repository for? ###
 
 * Quick summary  
-	Written originally (ca. October 2011) as a conversion of a Perl program to C#, this is a Sudoku solver that primarily works using events triggered by changes to the grid. It 'self solves' as any cell is entered or solved for asynchronously. 
+	Written originally (ca. October 2011) as a conversion of a [Perl program](https://github.com/HerrickSpencer/SudokuSolver/blob/master/SudokuSolver/Sudoku.pl) to C#, this is a Sudoku solver that primarily works using events triggered by changes to the grid. It 'self solves' as any cell is entered or solved for asynchronously. 
 * Version 1.0  
 * Longer summary  
 	This started as a Perl program I wrote ([included in this repo](https://github.com/HerrickSpencer/SudokuSolver/blob/master/SudokuSolver/Sudoku.pl)) that I used to help solve difficult Sudoku puzzles... then I tried to use that pl to solve the most difficult ones and it works well. However, I wanted to study Async programming and Eventing in C#... so I decided to rewrite the project in C# as a library for a console app. (The Console app is still included in the project)
