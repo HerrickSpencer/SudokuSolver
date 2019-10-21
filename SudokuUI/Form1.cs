@@ -272,6 +272,7 @@ namespace SudokuUI
         private async void TryBreak()
         {
             this.tryingBreak = true;
+            changedCtr = 0;
             Task<bool> t = SudukuPuzzleBreaker.TryBreakAsync(puzzle);
 
             if (await t)
