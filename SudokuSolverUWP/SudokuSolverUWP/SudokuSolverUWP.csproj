@@ -107,6 +107,38 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="..\..\Boards\Board.csv">
+      <Link>Assets\Boards\Board.csv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\Boards\Board1.csv">
+      <Link>Assets\Boards\Board1.csv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\Boards\Board2.csv">
+      <Link>Assets\Boards\Board2.csv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\Boards\Board3.csv">
+      <Link>Assets\Boards\Board3.csv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\Boards\Board4.csv">
+      <Link>Assets\Boards\Board4.csv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\Boards\GEOboard.csv">
+      <Link>Assets\Boards\GEOboard.csv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\Boards\MostDifficult-solved.csv">
+      <Link>Assets\Boards\MostDifficult-solved.csv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\Boards\MostDifficult.csv">
+      <Link>Assets\Boards\MostDifficult.csv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SudokuSolverUWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
