@@ -1,5 +1,9 @@
-﻿using System;
+﻿using SudokuSolverUWP.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -23,5 +27,16 @@ namespace SudokuSolverUWP.View
         {
             this.InitializeComponent();
         }
+
+        public CellModel CellData
+        {
+            get { return (CellModel)GetValue(CellDataProperty); }
+            set { SetValue(CellDataProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CellData.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CellDataProperty =
+            DependencyProperty.Register("CellData", typeof(CellModel), typeof(CellView), null);
+
     }
 }

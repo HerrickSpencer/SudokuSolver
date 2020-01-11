@@ -7,6 +7,8 @@ using System.ComponentModel;
 using SudokuSolverLib;
 using System.Collections.ObjectModel;
 using Windows.UI.Core;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml;
 
 namespace SudokuSolverUWP.Model
 {
@@ -17,27 +19,79 @@ namespace SudokuSolverUWP.Model
         public CellModel(CoreDispatcher dispatcher, SudokuCell cell) : base(dispatcher)
         {
             this.cell = cell;
-            foreach (int val in cell.PossibleValues)
+            cell.ValueChanged += Cell_ValueChanged;
+            foreach (int x in new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 })
             {
-                this.PossibleValues.Add(val);
+                PossibleValues.Add(cell.IsPossible(x) ? Visibility.Visible : Visibility.Collapsed);
             }
         }
 
-        public ObservableCollection<int> PossibleValues = new ObservableCollection<int>();
-        public void SetPossible(int[] vals)
+        private void Cell_ValueChanged(object sender, EventArgs e)
         {
-            cell.SetPossibleValues(vals);
+            foreach (int x in new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 })
+            {
+                if (PossibleValues[x - 1] != (cell.IsPossible(x) ? Visibility.Visible : Visibility.Collapsed))
+                {
+                    PossibleValues[x - 1] = (cell.IsPossible(x) ? Visibility.Visible : Visibility.Collapsed);
+                }
+            }
+
+            if (cell.IsSolved)
+            {
+                PossibleValues[cell.SolvedValue - 1] = Visibility.Collapsed;
+            }
+            base.RaisepropertyChanged("SolvedValue");
         }
 
-        public int SolvedValue
+        public ObservableCollection<Visibility> PossibleValues = new ObservableCollection<Visibility>();
+
+        public string SolvedValue
         {
-            get {
-                return cell.PossibleValues.First();
+            get
+            {
+                return cell.SolvedValue > 0?cell.SolvedValue.ToString():"";
             }
-            set {
-                cell.SetPossibleValues(new int[] { value});
-                base.RaisepropertyChanged("SolvedValue");
+        }
+
+        /// <summary>
+        /// for testing only
+        /// </summary>
+        internal void AddPossible()
+        {
+            foreach (int x in new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 })
+            {
+                if (!cell.IsPossible(x))
+                {
+                    int[] added = cell.PossibleValues.Concat(new[] { x }).ToArray();
+                    cell.SetPossibleValues(added);
+                    return;
+                }
             }
+            base.RaisepropertyChanged("PossibleValues");
+        }
+
+        /// <summary>
+        /// for testing only
+        /// </summary>
+        public void RemovePossible()
+        {
+            foreach (int x in new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 })
+            {
+                if (cell.PossibleValues.Contains(x))
+                {
+                    cell.RemoveValue(x);
+                    return;
+                }
+            }
+            base.RaisepropertyChanged("PossibleValues");
+        }
+
+        /// <summary>
+        /// for testing only
+        /// </summary>
+        internal void SetPossible(int[] v)
+        {
+            cell.SetPossibleValues(v);
         }
     }
 }

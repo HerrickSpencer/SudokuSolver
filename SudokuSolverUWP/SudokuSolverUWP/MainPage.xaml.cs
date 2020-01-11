@@ -40,7 +40,12 @@ namespace SudokuSolverUWP
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.cell.SolvedValue = 7;
+            this.cell.RemovePossible();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.cell.AddPossible();
         }
     }
 }

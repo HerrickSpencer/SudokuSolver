@@ -47,7 +47,7 @@ namespace SudokuSolverLib
         public void SetPossibleValues(int[] possibleValues)
         {
             HashSet<int> newValues = new HashSet<int>(possibleValues);
-            if (this.possibleValues == newValues || this.IsSolved)
+            if (this.possibleValues == newValues) // || this.IsSolved)
             {
                 return;
             }
