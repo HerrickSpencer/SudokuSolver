@@ -75,28 +75,36 @@
     <EmbeddedResource Include="PuzzleCellBox.resx">
       <DependentUpon>PuzzleCellBox.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Boards\Board.csv">
+    <None Include="..\Boards\Board.csv">
+      <Link>Boards\Board.csv</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Boards\Board1.csv">
+    <None Include="..\Boards\Board1.csv">
+      <Link>Boards\Board1.csv</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Boards\Board2.csv">
+    <None Include="..\Boards\Board2.csv">
+      <Link>Boards\Board2.csv</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Boards\Board3.csv">
+    <None Include="..\Boards\Board3.csv">
+      <Link>Boards\Board3.csv</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Boards\Board4.csv">
+    <None Include="..\Boards\Board4.csv">
+      <Link>Boards\Board4.csv</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Boards\GEOboard.csv">
+    <None Include="..\Boards\GEOboard.csv">
+      <Link>Boards\GEOboard.csv</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Boards\MostDifficult-solved.csv">
+    <None Include="..\Boards\MostDifficult-solved.csv">
+      <Link>Boards\MostDifficult-solved.csv</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Boards\MostDifficult.csv">
+    <None Include="..\Boards\MostDifficult.csv">
+      <Link>Boards\MostDifficult.csv</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Properties\Settings.settings">
@@ -113,9 +121,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SudokuSolver\SudokuSolver.csproj">
+    <ProjectReference Include="..\SudokuSolverLib\SudokuSolverLib.csproj">
       <Project>{0be04e44-42c4-4b3c-80d4-c1ae460bd868}</Project>
-      <Name>SudokuSolver</Name>
+      <Name>SudokuSolverLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SudokuSolver
+namespace SudokuSolverLib
 {
     public class SudukuPuzzleBreaker
     {

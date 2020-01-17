@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SudokuSolver
+namespace SudokuSolverLib
 {
-    internal class SudokuRow : SudokuLineSet
+    internal class SudokuColumn : SudokuLineSet
     {
         internal override void Add(SudokuCell item)
         {
             base.Add(item);
-            item.row = this;
-        }
+            item.col = this;
+        } 
     }
 }

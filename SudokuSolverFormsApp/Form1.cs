@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using SudokuSolver;
+using SudokuSolverLib;
 using System;
 using System.Drawing;
 using System.Threading;

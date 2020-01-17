@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SudokuSolver
+namespace SudokuSolverLib
 {
     internal class SudokuBox : SudokuCellSet
     {
