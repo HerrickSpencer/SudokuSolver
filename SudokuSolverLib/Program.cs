@@ -1,10 +1,8 @@
-﻿using System;
-using System.IO;
-using System.Text.RegularExpressions;
+﻿using SudokuSolverLib;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Diagnostics;
+using System.IO;
 
 namespace SudokuSolver
 {
