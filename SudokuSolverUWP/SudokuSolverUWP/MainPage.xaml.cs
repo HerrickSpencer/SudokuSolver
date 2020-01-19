@@ -23,13 +23,22 @@ namespace SudokuSolverUWP
     public sealed partial class MainPage : Page
     {
         Model.CellModel cell;
+        Model.PuzzleModel puzzle;
 
         public MainPage()
         {
             this.InitializeComponent();
+            this.puzzle = new Model.PuzzleModel(this.Dispatcher, new SudokuSolverLib.SudokuPuzzle());
             this.cell = new Model.CellModel(this.Dispatcher, new SudokuSolverLib.SudokuCell(3, 4));
             this.cell.SetPossible(new int[] { 5, 7 });
+
             DataContext = this;
+        }
+
+        public Model.PuzzleModel Puzzle
+        {
+            get { return puzzle; }
+            set { this.puzzle = value; }
         }
 
         public Model.CellModel Cell1
