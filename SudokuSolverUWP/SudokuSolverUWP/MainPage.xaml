@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="SudokuSolverUWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SudokuSolverUWP"
+    xmlns:views="using:SudokuSolverUWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Background>
+        <SolidColorBrush Color="{ThemeResource SystemColorBackgroundColor}"/>
+    </Page.Background>
+    <Page.Resources>
+        <DataTemplate x:Key="GridViewItemCellTemplate">
+            <Grid>
+                <views:CellView CellData="{Binding}"/>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <views:CellView CellData="{Binding Cell1}"/>
+            <Button Content="Add poss" Click="Button_Click_1" Style="{StaticResource TextBlockButtonStyle}"/>
+            <Button Content="Rem poss" Click="Button_Click" Style="{StaticResource TextBlockButtonStyle}"/>
+            <TextBox x:Uid="textinput"/>
+            <Grid>
+                
+                <GridView ItemTemplate="{StaticResource GridViewItemCellTemplate}" ItemsSource="{x:Bind Puzzle.Cells}" BorderThickness="1,1,1,1.4">
+                    <GridView.ItemContainerStyle>
+                        <Style TargetType="GridViewItem">
+                            <Setter Property="Margin" Value="0"/>
+                            <Setter Property="MinWidth" Value="20"/>
+                            <Setter Property="MinHeight" Value="20"/>
+                        </Style>
+                    </GridView.ItemContainerStyle>
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid MaximumRowsOrColumns="9" Margin="0,0,0,0">
+                        </ItemsWrapGrid>
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                </GridView>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>
