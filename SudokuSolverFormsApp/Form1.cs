@@ -265,7 +265,7 @@ namespace SudokuUI
                 return;
             }
             textBox1.Visible = true;
-            textBox1.Text = string.Format("Permutations tested : {0}", ++changedCtr);
+            textBox1.Text = string.Format("Permutations : {0} | Solved : {1}", ++changedCtr, SudukuPuzzleBreaker.SolvedPuzzles.Count);
             //ChangePuzzle(e.Puzzle);
         }
 
@@ -273,7 +273,7 @@ namespace SudokuUI
         {
             this.tryingBreak = true;
             changedCtr = 0;
-            Task<bool> t = SudukuPuzzleBreaker.TryBreakAsync(puzzle);
+            Task<bool> t = SudukuPuzzleBreaker.TryBreakAsync(puzzle, true);
 
             if (await t)
             {
@@ -282,7 +282,11 @@ namespace SudokuUI
             }
             this.tryingBreak = false;
             textBox1.Visible = true;
-            textBox1.Text = string.Format(" Completed|Permutations : {0}", ++changedCtr);
+            textBox1.Text = string.Format(" Completed|Permutations : {0} | Solved : {1}", ++changedCtr, SudukuPuzzleBreaker.SolvedPuzzles.Count);
+            if (SudukuPuzzleBreaker.SolvedPuzzles.Count > 0)
+            {
+                ChangePuzzle(SudukuPuzzleBreaker.SolvedPuzzles[0]);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)

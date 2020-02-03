@@ -1,17 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace SudokuSolverLib
 {
     public class SudukuPuzzleBreaker
     {
-        public static async Task<bool> TryBreakAsync(SudokuPuzzle puzzle)
+        public static List<SudokuPuzzle> SolvedPuzzles { get; set; } = new List<SudokuPuzzle>();
+
+        public static async Task<bool> TryBreakAsync(SudokuPuzzle puzzle, bool CheckAllSolutions = false)
         {
-            bool t = await Task.Run(() => TryBreak(puzzle));
+            SolvedPuzzles.Clear();
+            bool t = await Task.Run(() => TryBreak(puzzle, CheckAllSolutions));
             return t;
         }
 
-        public static bool TryBreak(SudokuPuzzle puzzle)
+        public static bool TryBreak(SudokuPuzzle puzzle, bool CheckAllSolutions)
         {
             if (puzzle.IsSolved)
             {
@@ -26,13 +31,24 @@ namespace SudokuSolverLib
             foreach (int possible in cellToTry.PossibleValues)
             {
                 SudokuPuzzle puzzleTotry = new SudokuPuzzle(puzzle.ToIntArray());
+                SudokuPuzzle puzzleTried = new SudokuPuzzle(puzzle.ToIntArray());
                 SudokuCell cell = puzzleTotry.Cells[cellToTry.X, cellToTry.Y];
 
                 cell.SolvedValue = possible;
                 if (puzzleTotry.IsSolved)
                 {
-                    CopyPuzzle(puzzleTotry, puzzle);
-                    return true; // no progress needed, it will return puzzle
+                    if (CheckAllSolutions)
+                    {
+                        SolvedPuzzles.Add(puzzleTotry);
+                        // remove possible option and continue
+                        puzzleTried.Cells[cellToTry.X, cellToTry.Y].RemoveValue(possible);
+                        return TryBreak(puzzleTried, CheckAllSolutions);
+                    }
+                    else
+                    { 
+                        CopyPuzzle(puzzleTotry, puzzle);
+                        return true; // no progress needed, it will return puzzle
+                    }
                 }
                 else
                 {
@@ -42,13 +58,13 @@ namespace SudokuSolverLib
                         RaiseBreakerProgressEvent(puzzle);
                         if (cell.IsSolved)
                         {
-                            return TryBreak(puzzle);
+                            return TryBreak(puzzle, CheckAllSolutions);
                         }
                     }
                     else
                     {
                         //try another cell
-                        if (TryBreak(puzzleTotry))
+                        if (TryBreak(puzzleTotry, CheckAllSolutions))
                         {
                             CopyPuzzle(puzzleTotry, puzzle);
                             RaiseBreakerProgressEvent(puzzle);           
@@ -61,7 +77,7 @@ namespace SudokuSolverLib
                             RaiseBreakerProgressEvent(puzzle);
                             if (cell.IsSolved)
                             {
-                                return TryBreak(puzzle);
+                                return TryBreak(puzzle, CheckAllSolutions); 
                             }
                         }
                     }
