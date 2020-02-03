@@ -18,6 +18,12 @@ namespace SudokuSolverLib
             ReduceBySoloSet();
         }
 
+        /// <summary>
+        /// Checks if a possible number in a boxset is unique to one row/col. 
+        /// In other words a 2 exists in the boxset in more than one place, but all places exist in the same row or col. 
+        /// Therefore, the corresponding row or col can only have that number in that boxset. 
+        /// Next step removes the number from any other boxset for any cell in that row or col.
+        /// </summary>
         private void ReduceBySoloSet()
         {
             lock (reduceLocker)
